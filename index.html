@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Saw mini game Ticket" />
+        <meta name="author" content="Cristian Kira Hiro" />
+        <title>Encuentra el Ticket o pierde</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+
+<audio id = "SawAudio" autoplay loop> 
+    <source src="sound/saw.mp3" type="audio/mpeg" > </audio>
+
+<audio id = "RisaFin" autoplay loop> 
+    <source src="sound/risaFin.mp3" type="audio/mpeg" > </audio>
+
+<audio id = "GameOver" autoplay > 
+    <source src="sound/GameOver.mp3" type="audio/mpeg" > </audio>
+
+<audio id = "Crono" autoplay > 
+    <source src="sound/crono.mp3" type="audio/mpeg" > </audio>
+
+<audio id = "30seg" autoplay > 
+    <source src="sound/30seg.mp3" type="audio/mpeg" > </audio>
+
+<audio id = "10seg" autoplay > 
+    <source src="sound/10seg.mp3" type="audio/mpeg" > </audio>
+
+<audio id = "GameWin" autoplay > 
+    <source src="sound/EljuegoTermino.mp3" type="audio/mpeg" > </audio>
+
+<audio id = "S_MenosObvio" autoplay > 
+    <source src="sound/menosobvio.mp3" type="audio/mpeg" > </audio>
+        
+<audio id = "S_Pervertida" autoplay > 
+    <source src="sound/pervertida.mp3" type="audio/mpeg" > </audio>
+        
+<audio id = "S_Puzzle" autoplay > 
+    <source src="sound/Puzzle.mp3" type="audio/mpeg" > </audio>
+        
+<audio id = "S_risa2" autoplay > 
+    <source src="sound/risa2.mp3" type="audio/mpeg" > </audio>
+        
+<audio id = "S_Sacrificios" autoplay > 
+    <source src="sound/Sacrificios.mp3" type="audio/mpeg" > </audio>
+
+<audio id = "S_ValorarVida" autoplay > 
+    <source src="sound/ValorarVida.mp3" type="audio/mpeg" > </audio>
+
+<audio id = "S_Crash" autoplay > 
+    <source src="sound/crash.mp3" type="audio/mpeg" > </audio>
+
+<audio id = "S_Aliento" autoplay > 
+    <source src="sound/breath.mp3" type="audio/mpeg" > </audio>
+
+<script >
+
+
+    function PlayAudio() 
+    {
+        document.getElementById("SawAudio").play();
+    }
+     function StopCrono() 
+    {
+        document.getElementById("Crono").pause();
+    }
+    function PlayAudioF() 
+    {
+        document.getElementById("RisaFin").play();
+    }
+     function PlayGO() 
+    {
+        document.getElementById("GameOver").play();
+    }
+      function PlayCrono() 
+    {
+        document.getElementById("Crono").play();
+    }
+        function Play30seg() 
+    {
+        document.getElementById("30seg").play();
+    }
+        function Play10seg() 
+    {
+        document.getElementById("10seg").play();
+    }
+         function PlayGameWin() 
+    {
+        document.getElementById("GameWin").play();
+    }
+         function PlayMenosObvio() 
+    {
+        document.getElementById("S_MenosObvio").play();
+    }
+         function PlayPervetida() 
+    {
+        document.getElementById("S_Pervertida").play();
+    }
+        function PlayPuzzle() 
+    {
+        document.getElementById("S_Puzzle").play();
+    }
+        function Playrisa2() 
+    {
+        document.getElementById("S_risa2").play();
+    }
+         function PlaySacrificio() 
+    {
+        document.getElementById("S_Sacrificios").play();
+    }
+         function PlayValorarVida() 
+    {
+        document.getElementById("S_ValorarVida").play();
+    }
+        function Playcrash() 
+    {
+        document.getElementById("S_Crash").play();
+    }
+         function PlayAliento() 
+    {
+        document.getElementById("S_Aliento").play();
+    }
+
+    audio= new Audio("sound/fin.mp3");
+    
+    var minutes = 0;
+    var seconds = 0;
+    var valid = 0;
+    
+    clearTimeout(timer);
+
+////////////////
+    function cerrar(){
+
+                    PlayAliento();
+                     const Bcerrarb = document.getElementById('Bcerrar');
+                        Bcerrarb.disabled = true;
+                        Bcerrarb.style.opacity = 0.2;  
+                        Bcerrarb.textContent = "-10 segundos";
+    setTimeout(() => {
+
+           $('#CerrarModal1').click();  
+            Bcerrarb.disabled = false;
+            Bcerrarb.style.opacity = 1.0;  
+            Bcerrarb.textContent = "SALIR";
+                                        }, 10000);
+           
+
+                    }
+////////////////
+    function cerrar2(){
+                    Playrisa2();
+                     const btn_02 = document.getElementById('btn_2');
+                        btn_02.disabled = true;
+                        btn_02.style.opacity = 0.2;  
+                        btn_02.textContent = "-10 segundos";
+  
+    setTimeout(() => {
+
+
+           $('#CerrarModal2').click(); 
+            btn_02.disabled = false;
+            btn_02.style.opacity = 1.0; 
+            btn_02.textContent = "SALIR";
+                                         }, 10000);
+                    }
+////////////////
+
+   function cerrar3(){
+                    Play10seg();
+                    const btn_03 = document.getElementById('btn_3');
+                        btn_03.disabled = true;
+                        btn_03.style.opacity = 0.2;  
+                        btn_03.textContent = "-10 segundos";
+
+
+    setTimeout(() => {
+
+           $('#CerrarModal3').click();  
+            btn_03.disabled = false;
+            btn_03.style.opacity = 1.0; 
+            btn_03.textContent = "SALIR";
+                                        }, 10000);
+                    }
+////////////////
+
+    function cerrar4(){
+                    PlayMenosObvio();
+                    const btn_04 = document.getElementById('btn_4');
+                        btn_04.disabled = true;
+                        btn_04.style.opacity = 0.2;  
+                        btn_04.textContent = "-10 segundos";
+
+
+    setTimeout(() => {
+
+           $('#CerrarModal4').click();  
+            btn_04.disabled = false;
+            btn_04.style.opacity = 1.0; 
+            btn_04.textContent = "SALIR";
+                                        }, 10000);
+                    }
+////////////////
+
+   function cerrar5(){
+                    Playcrash();
+                    const btn_05 = document.getElementById('btn_5');
+                        btn_05.disabled = true;
+                        btn_05.style.opacity = 0.2;  
+                        btn_05.textContent = "-10 segundos";
+
+
+    setTimeout(() => {
+
+           $('#CerrarModal5').click();  
+            btn_05.disabled = false;
+            btn_05.style.opacity = 1.0; 
+            btn_05.textContent = "SALIR";
+                                        }, 10000);
+                    }
+////////////////
+
+    function cerrar6(){
+
+                    const btn_06 = document.getElementById('btn_6');
+                        btn_06.disabled = true;
+                        btn_06.style.opacity = 0.2;  
+                        btn_06.textContent = "-10 segundos";
+
+
+    setTimeout(() => {
+
+           $('#CerrarModal6').click();  
+            btn_06.disabled = false;
+            btn_06.style.opacity = 1.0; 
+            btn_06.textContent = "SALIR";
+                                        }, 10000);
+                    }
+  ////////////////
+                    
+    function cerrar7(){
+                    PlayPervetida() ;
+                    const btn_07 = document.getElementById('btn_7');
+                        btn_07.disabled = true;
+                        btn_07.style.opacity = 0.2;  
+                        btn_07.textContent = "-10 segundos";
+
+
+    setTimeout(() => {
+
+           $('#CerrarModal7').click();  
+            btn_07.disabled = false;
+            btn_07.style.opacity = 1.0; 
+            btn_07.textContent = "SALIR";
+                                        }, 10000);
+                    }
+ ////////////////
+
+    function cerrar8(){
+                    PlaySacrificio();
+                    const btn_08 = document.getElementById('btn_8');
+                        btn_08.disabled = true;
+                        btn_08.style.opacity = 0.2;  
+                        btn_08.textContent = "-10 segundos";
+
+
+    setTimeout(() => {
+
+           $('#CerrarModal8').click();  
+            btn_08.disabled = false;
+            btn_08.style.opacity = 1.0; 
+            btn_08.textContent = "SALIR";
+                                        }, 10000);
+                    }
+////////////////
+
+    function cerrar9(){
+
+valid=1;
+       PlayGameWin();    
+       StopCrono();
+    const myButtonWin = document.getElementById('myButtonWin');
+
+
+
+        myButtonWin.disabled = true;
+    myButtonWin.style.opacity = 0.2;  
+ setTimeout(() => {
+
+      
+
+    //PAUSAR PAGINA//
+ // function sleep(milliseconds) {
+   // const date = Date.now();
+   // let currentDate = null;
+    //do {
+    //  currentDate = Date.now();
+   // } while (currentDate - date < milliseconds);
+ // }sleep(30000000);
+
+ }, 15000);
+
+                    }
+////////////////
+
+    function cerrar10(){
+                    PlayValorarVida();
+                    const btn_10 = document.getElementById('btn_10');
+                        btn_10.disabled = true;
+                        btn_10.style.opacity = 0.2;  
+                        btn_10.textContent = "-10 segundos";
+
+
+    setTimeout(() => {
+
+           $('#CerrarModal10').click();  
+            btn_10.disabled = false;
+            btn_10.style.opacity = 1.0; 
+            btn_10.textContent = "SALIR";
+                                        }, 10000);
+                    
+                    }
+////////////////
+
+       function cerrar11(){
+
+                    const btn_11 = document.getElementById('btn_11');
+                        btn_11.disabled = true;
+                        btn_11.style.opacity = 0.2;  
+                        btn_11.textContent = "-10 segundos";
+
+
+    setTimeout(() => {
+
+           $('#CerrarModal11').click();  
+            btn_11.disabled = false;
+            btn_11.style.opacity = 1.0; 
+            btn_11.textContent = "SALIR";
+                                        }, 10000);
+                    }
+////////////////
+
+
+    function cerrar12(){
+                    PlayPuzzle();
+                    const btn_12 = document.getElementById('btn_12');
+                        btn_12.disabled = true;
+                        btn_12.style.opacity = 0.2;  
+                        btn_12.textContent = "-10 segundos";
+
+
+    setTimeout(() => {
+
+           $('#CerrarModal12').click();  
+            btn_12.disabled = false;
+            btn_12.style.opacity = 1.0; 
+            btn_12.textContent = "SALIR";
+                                        }, 10000);
+                    }
+////////////////
+
+
+</script>
+
+
+
+    </head>
+<div class="ratio ratio-16x9">
+                    <video class="embed-responsive-item" controls   >
+
+                     <source src="sound/saw4.mp4" type="video/mp4">
+
+                    </video>
+                 </div>
+    <body id="page-top">
+     
+        <header class=" bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                
+
+
+
+                
+
+
+                <!-- Masthead Heading-->
+                <h1 class="masthead-heading titulo mb-0" id="Tiempo">00 : 00</h1>
+
+        <!-- BOTON PRUEBA-->
+
+ <button id= "myButton"type="button" class="btn btn-primary" data-click_counter_hidden="0"  data-bs-toggle="collapse" data-bs-target="#PaginaOculta" onclick="Empezar()" >INICIAR</button> 
+
+
+
+        <script> 
+
+    const myButton = document.getElementById('myButton');
+
+
+
+myButton.addEventListener('click', function() {
+
+
+  var el = document.documentElement;
+        var rfs = // for newer Webkit and Firefox
+            el.requestFullScreen
+            || el.webkitRequestFullScreen
+            || el.mozRequestFullScreen
+            || el.msRequestFullScreen
+                ;
+                if(typeof rfs!="undefined" && rfs){
+                    rfs.call(el);
+                } else if(typeof window.ActiveXObject!="undefined"){
+                // for Internet Explorer
+                var wscript = new ActiveXObject("WScript.Shell");
+                if (wscript!=null) {
+                    wscript.SendKeys("{F11}");
+                }
+                }
+
+    PlayAudio();
+    PlayCrono();
+    myButton.disabled = true;
+    myButton.style.opacity = 0.2;
+    myButton.textContent = 'ELJUEGO A EMPEZADO';
+        //simulación de espera para ejecución de un proceso
+    setTimeout(function() {
+        myButton.textContent = 'Pulsar';
+        myButton.style.opacity = 0.5;
+        myButton.disabled = false;
+    }, 60000000);  
+
+
+   // setTimeout(function() {
+    //   Play30seg();
+    //}, 40000);  
+
+  // audio.pause();
+
+var timer = setInterval(function () {
+    seconds++;
+    if (seconds == 60) {
+        minutes++;
+        seconds = 0;
+    }
+    if (minutes == 60) {
+        
+        minutes = 0;
+    }
+     if (minutes == 1 & seconds == 1) {
+        
+        seconds --;
+        $('#Tiempo').text( '01'  + ":" + '00' );
+
+    }
+ 
+
+   if (minutes == 1 & seconds == 0 & valid==0) 
+   {
+        
+    
+// PONER QUE PASA AL TERMINAR EL CONTEO 
+     
+    $('#FallasteModal').modal('show');
+
+    PlayGO();
+    PlayAudioF();
+    }
+
+    if (minutes == 0 & seconds == 40 & valid==0) 
+   {
+        Play30seg();
+ 
+    }
+ 
+
+
+
+
+
+    
+
+    $('#Tiempo').text( ('0' + minutes).slice(-2) + ":" + ('0' + seconds).slice(-2));
+}, 1000);
+
+
+
+
+
+  //setTimeout(function() {
+       
+    //}, 60000);  
+
+
+
+
+
+});  
+
+
+</script>
+           
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class="fa-solid fa-skull"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0">Valora el tiempo que inviertes en cada decisión que vas tomando, El juego comineza  tras iniciar el tiempo . NO ROMPAS LAS REGLAS.
+ <br>Hoy veras tu muerte, o puedes hacer algo al respecto....</p> <br>
+            </div>
+        </header>
+
+     <!--   --------------ESCONDER DESDE AQUI--------------------- -->
+        <!-- Portfolio Section-->
+        <div id = "PaginaOculta" class = "collapse"> 
+        <section class="page-section portfolio" id="portfolio">
+            <div class="container">
+                <!-- Portfolio Section Heading-->
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">VIVE O MUERE TU ESCOGES</h2>
+                <!-- Icon Divider-->
+                <div class="divider-custom">
+                    <div class="divider-custom-line"></div>
+                    <div class="divider-custom-icon"><i class=" fa fa-key"></i></div>
+                    <div class="divider-custom-line"></div>
+                </div>
+                <!-- Portfolio Grid Items-->
+                <div class="row justify-content-center">
+                    <!-- Portfolio Item 1-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fa fa-clock-o fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/cabin.png" alt="..." />
+                        </div>
+
+
+
+
+
+                    </div>
+                    <!-- Portfolio Item 2-->
+                   <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+                          <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-clock-o  fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/cake.png" alt="..." />
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Item 3-->
+                   <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-clock-o  fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/b.png" alt="..." />
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 4-->
+                   <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-clock-o  fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/8.png" alt="..." />
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 5-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal5">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-clock-o  fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/safe.png" alt="..." />
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 6-->
+                   <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal6">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-clock-o  fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/submarine.png" alt="..." />
+                        </div>
+                    </div>
+
+                       <!-- Portfolio Item 7-->
+                     
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal7">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-clock-o  fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/s.png" alt="..." />
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Item 8-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal8">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-clock-o  fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/g.png" alt="..." />
+                        </div>
+                    </div>
+                  
+                   <!-- Portfolio Item 9-->
+                     
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal9">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-clock-o  fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/game.png" alt="..." />
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Item 10-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal10">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-clock-o  fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/circus.png" alt="..." />
+                        </div>
+                    </div>
+                    
+                        <!-- Portfolio Item 11-->
+                     
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal11">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-clock-o  fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/l.png" alt="..." />
+                        </div>
+                    </div>
+
+                    <!-- Portfolio Item 12-->
+                    <div class="col-md-6 col-lg-4 mb-5">
+                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal12">
+                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                                <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-clock-o  fa-3x"></i></div>
+                            </div>
+                            <img class="img-fluid" src="assets/img/portfolio/3.png" alt="..." />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>   
+
+    </div>
+
+                    
+                    </div>
+                </div>
+            </div>
+        </section>
+ 
+        
+        <!-- Portfolio Modals-->
+        <!-- Portfolio Modal 1-->
+    
+         <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false"  >
+            <div class="modal-dialog modal-xl">
+                              <div class="modal-content">
+                    <div class="modal-header border-0">
+
+                        <button id="CerrarModal1"  data-bs-dismiss="modal" style="display: none;"></button> 
+
+
+                    </div>   
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0"> 💀 FALLASTE 💀</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fa fa-eye"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/o.gif" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4">Los monstruos y los fantasmas existen. Están dentro de nosotros y en ocasiones ganan</br>(Stephen King)</p>
+                                    <button id= "Bcerrar" class="btn btn-primary"  onclick="cerrar();">
+                                        
+                                        SALIR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 2-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false"  >
+
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                       
+                        <button id="CerrarModal2"  data-bs-dismiss="modal" style="display: none;"></button>   
+                    </div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">💀 FALLASTE 💀</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class=" fa fa-paw"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cake.png" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4">BEBÉ</p>
+                                    <button id ="btn_2" class="btn btn-primary" onclick="cerrar2();">
+                                        
+                                        SALIR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+ 
+
+        </div>
+        <!-- Portfolio Modal 3-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3" aria-hidden="true"data-bs-backdrop="static" data-bs-keyboard="false"  >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button id="CerrarModal3"  data-bs-dismiss="modal" style="display: none;"></button> 
+                       </div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">💀 FALLASTE 💀</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-carrot"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/b.png" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4">Creemos que existe un límite en el miedo. Sin embargo, sólo es así hasta que nos encontramos con lo desconocido.</br>(Peter Hoeg)</p>
+                                    <button id ="btn_3" class="btn btn-primary"  onclick="cerrar3();">
+                                      
+                                        SALIR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 4-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true"data-bs-backdrop="static" data-bs-keyboard="false" >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button id="CerrarModal4"  data-bs-dismiss="modal" style="display: none;"></button> 
+                    </div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">💀 FALLASTE 💀</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="far fa-snowflake"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/8.png" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4">Más cuerdo es el que acepta su propia locura</br>(Edgar Allan Poe)</p>
+                                    <button id ="btn_4" class="btn btn-primary"  onclick="cerrar4();">
+                                      
+                                        SALIR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 5-->
+        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5" aria-hidden="true"data-bs-backdrop="static" data-bs-keyboard="false"  >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button id="CerrarModal5"  data-bs-dismiss="modal" style="display: none;"></button> 
+                    </div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">💀 FALLASTE 💀</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-book-dead"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/safe.png" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4">Los recuerdos de una mente es una cosa terrible para desperdiciar</br>(Get out)</p>
+                                    <button id ="btn_5" class="btn btn-primary"  onclick="cerrar5();">
+                                     
+                                        SALIR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 6-->
+        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6" aria-hidden="true"data-bs-backdrop="static" data-bs-keyboard="false"  >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button id="CerrarModal6"  data-bs-dismiss="modal" style="display: none;"></button> 
+                    </div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">💀 FALLASTE 💀</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-crow"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/submarine.png" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4">......</p>
+                                    <button id ="btn_6"class="btn btn-primary"  onclick="cerrar6();">
+                                    
+                                        SALIR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+           <!-- Portfolio Modal 7-->
+        <div class="portfolio-modal modal fade" id="portfolioModal7" tabindex="-1" aria-labelledby="portfolioModal4" aria-hidden="true"data-bs-backdrop="static" data-bs-keyboard="false"  >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button id="CerrarModal7"  data-bs-dismiss="modal" style="display: none;"></button> 
+                    </div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">💀 FALLASTE 💀</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-cocktail"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/s.png" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4">Si quieres que la gente te escuche, ya no puedes simplemente tocarles el hombro para que volteen. Tienes que golpearlos con un martillo, así te darás cuenta que tienes su estricta atención</br> (Se7en)</p>
+                                    <button id ="btn_7" class="btn btn-primary"  onclick="cerrar7();">
+                                     
+                                        SALIR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 8-->
+        <div class="portfolio-modal modal fade" id="portfolioModal8" tabindex="-1" aria-labelledby="portfolioModal8" aria-hidden="true"data-bs-backdrop="static" data-bs-keyboard="false"  >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button id="CerrarModal8"  data-bs-dismiss="modal" style="display: none;"></button> 
+                    </div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">💀 FALLASTE 💀</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class=" fas fa-cat"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/g.png" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4">La vida deja de pertenecernos solo a nosotros cuando ya hay quienes nos aman con la suya</br>(Zed B.)</p>
+                                    <button id ="btn_8" class="btn btn-primary"  onclick="cerrar8();">
+                                     
+                                        SALIR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <!-- Portfolio Modal 9-->
+        <div class="portfolio-modal modal fade" id="portfolioModal9" tabindex="-1" aria-labelledby="portfolioModal9" aria-hidden="true"data-bs-backdrop="static" data-bs-keyboard="false"  >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button id="CerrarModal9"  data-bs-dismiss="modal" style="display: none;"></button> 
+                    </div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Felicidades</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fa fa-key"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/key2.png" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4"></p>
+                                    <button id="myButtonWin" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#Llave"  onclick="cerrar9();">
+                                     
+                                        OBTENER LLAVE
+                                    </button>
+
+                                      <div id = "Llave" class = "collapse"> 
+
+                                         <img class="img-fluid rounded mb-5" src="assets/img/portfolio/Link.png" alt="..." />
+
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 10-->
+        <div class="portfolio-modal modal fade" id="portfolioModal10" tabindex="-1" aria-labelledby="portfolioModal10" aria-hidden="true"data-bs-backdrop="static" data-bs-keyboard="false"  >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button id="CerrarModal10"  data-bs-dismiss="modal" style="display: none;"></button> 
+                    </div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">💀 FALLASTE 💀</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class=" fas fa-cross"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/circus.png" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4">La gente no aprecia el valor de sus vidas. Siguen bebiendo un vaso de agua, pero no la saborean.</p>
+                                    <button id ="btn_10" class="btn btn-primary"  onclick="cerrar10();">
+                                     
+                                        SALIR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio Modal 11-->
+        <div class="portfolio-modal modal fade" id="portfolioModal11" tabindex="-1" aria-labelledby="portfolioModal11" aria-hidden="true"data-bs-backdrop="static" data-bs-keyboard="false"  >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button id="CerrarModal11"  data-bs-dismiss="modal" style="display: none;"></button> 
+                    </div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">💀 FALLASTE 💀</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fa fa-mars-stroke-h"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/l.png" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4">Las distracciones hechas a medida nos alejan de lo verdaderamente importante al momento de terminar un destino y nos pierden del camino inicial</br>(Miyoki Ao)</p>
+                                    <button id ="btn_11"class="btn btn-primary"  onclick="cerrar11();">
+                                     
+                                        SALIR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                <!-- Portfolio Modal 12-->
+        <div class="portfolio-modal modal fade" id="portfolioModal12" tabindex="-1" aria-labelledby="portfolioModal12" aria-hidden="true"data-bs-backdrop="static" data-bs-keyboard="false"  >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button id="CerrarModal12"  data-bs-dismiss="modal" style="display: none;"></button> 
+                    </div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">💀 FALLASTE 💀</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class="fas fa-moon"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/3.png" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4">Donde no hay imaginación, no puede existir el terror</br>(Arthur Conan Doyle)</p>
+                                    <button id ="btn_12" class="btn btn-primary"  onclick="cerrar12();">
+                                     
+                                        SALIR
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MODAL FALLASTE -->
+        <div class="portfolio-modal modal fade" id="FallasteModal" tabindex="-1" aria-labelledby="FallasteModal" aria-hidden="true"data-bs-backdrop="static" data-bs-keyboard="false"  >
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button id="CerrarModal12"  data-bs-dismiss="modal" style="display: none;"></button> 
+                    </div>
+                    <div class="modal-body text-center pb-5">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-lg-8">
+                                    <!-- Portfolio Modal - Title-->
+                                    <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">💀 ESTAS MUERTA 💀</h2>
+                                    <!-- Icon Divider-->
+                                    <div class="divider-custom">
+                                        <div class="divider-custom-line"></div>
+                                        <div class="divider-custom-icon"><i class=" far fa-clock"></i></div>
+                                        <div class="divider-custom-line"></div>
+                                    </div>
+                                    <!-- Portfolio Modal - Image-->
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/fallaste.gif" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/fallaste.png" alt="..." />
+                                    <!-- Portfolio Modal - Text-->
+                                    <p class="mb-4">Escanea el QR la decisión es tuya! .</p>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               KIRA HIRO                                 * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
