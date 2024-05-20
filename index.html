@@ -18,49 +18,49 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 
-<audio id = "SawAudio" autoplay loop> 
+<audio id = "SawAudio"  loop> 
     <source src="sound/saw.mp3" type="audio/mpeg" > </audio>
 
-<audio id = "RisaFin" autoplay loop> 
+<audio id = "RisaFin"  loop> 
     <source src="sound/risaFin.mp3" type="audio/mpeg" > </audio>
 
-<audio id = "GameOver" autoplay > 
+<audio id = "GameOver"  > 
     <source src="sound/GameOver.mp3" type="audio/mpeg" > </audio>
 
-<audio id = "Crono" autoplay > 
+<audio id = "Crono"  > 
     <source src="sound/crono.mp3" type="audio/mpeg" > </audio>
 
-<audio id = "30seg" autoplay > 
+<audio id = "30seg"  > 
     <source src="sound/30seg.mp3" type="audio/mpeg" > </audio>
 
-<audio id = "10seg" autoplay > 
+<audio id = "10seg"  > 
     <source src="sound/10seg.mp3" type="audio/mpeg" > </audio>
 
-<audio id = "GameWin" autoplay > 
+<audio id = "GameWin"  > 
     <source src="sound/EljuegoTermino.mp3" type="audio/mpeg" > </audio>
 
-<audio id = "S_MenosObvio" autoplay > 
+<audio id = "S_MenosObvio"  > 
     <source src="sound/menosobvio.mp3" type="audio/mpeg" > </audio>
         
-<audio id = "S_Pervertida" autoplay > 
+<audio id = "S_Pervertida"  > 
     <source src="sound/pervertida.mp3" type="audio/mpeg" > </audio>
         
-<audio id = "S_Puzzle" autoplay > 
+<audio id = "S_Puzzle"  > 
     <source src="sound/Puzzle.mp3" type="audio/mpeg" > </audio>
         
-<audio id = "S_risa2" autoplay > 
+<audio id = "S_risa2"  > 
     <source src="sound/risa2.mp3" type="audio/mpeg" > </audio>
         
-<audio id = "S_Sacrificios" autoplay > 
+<audio id = "S_Sacrificios"  > 
     <source src="sound/Sacrificios.mp3" type="audio/mpeg" > </audio>
 
-<audio id = "S_ValorarVida" autoplay > 
+<audio id = "S_ValorarVida"  > 
     <source src="sound/ValorarVida.mp3" type="audio/mpeg" > </audio>
 
-<audio id = "S_Crash" autoplay > 
+<audio id = "S_Crash"  > 
     <source src="sound/crash.mp3" type="audio/mpeg" > </audio>
 
-<audio id = "S_Aliento" autoplay > 
+<audio id = "S_Aliento"  > 
     <source src="sound/breath.mp3" type="audio/mpeg" > </audio>
 
 <script >
@@ -130,6 +130,47 @@
     {
         document.getElementById("S_Aliento").play();
     }
+//////////STOP ///////////////////
+      function Stop30seg()   
+    {
+        document.getElementById("30seg").pause();
+    }
+        function Stop10seg() 
+    {
+        document.getElementById("10seg").pause();
+    }
+         function StopMenosObvio() 
+    {
+        document.getElementById("S_MenosObvio").pause();
+    }
+         function StopPervetida() 
+    {
+        document.getElementById("S_Pervertida").pause();
+    }
+        function StopPuzzle() 
+    {
+        document.getElementById("S_Puzzle").pause();
+    }
+        function Stoprisa2() 
+    {
+        document.getElementById("S_risa2").pause();
+    }
+         function StopSacrificio() 
+    {
+        document.getElementById("S_Sacrificios").pause();
+    }
+         function StopValorarVida() 
+    {
+        document.getElementById("S_ValorarVida").pause();
+    }
+        function Stopcrash() 
+    {
+        document.getElementById("S_Crash").pause();
+    }
+         function StopAliento() 
+    {
+        document.getElementById("S_Aliento").pause();
+    }
 
     audio= new Audio("sound/fin.mp3");
     
@@ -172,7 +213,7 @@
             btn_02.disabled = false;
             btn_02.style.opacity = 1.0; 
             btn_02.textContent = "SALIR";
-                                         }, 10000);
+                                         }, 7000);
                     }
 ////////////////
 
@@ -190,7 +231,7 @@
             btn_03.disabled = false;
             btn_03.style.opacity = 1.0; 
             btn_03.textContent = "SALIR";
-                                        }, 10000);
+                                        }, 7000);
                     }
 ////////////////
 
@@ -208,7 +249,7 @@
             btn_04.disabled = false;
             btn_04.style.opacity = 1.0; 
             btn_04.textContent = "SALIR";
-                                        }, 10000);
+                                        }, 7000);
                     }
 ////////////////
 
@@ -226,7 +267,7 @@
             btn_05.disabled = false;
             btn_05.style.opacity = 1.0; 
             btn_05.textContent = "SALIR";
-                                        }, 10000);
+                                        }, 8000);
                     }
 ////////////////
 
@@ -280,7 +321,7 @@
             btn_08.disabled = false;
             btn_08.style.opacity = 1.0; 
             btn_08.textContent = "SALIR";
-                                        }, 10000);
+                                        }, 7000);
                     }
 ////////////////
 
@@ -289,6 +330,17 @@
 valid=1;
        PlayGameWin();    
        StopCrono();
+       Stop10seg();
+       Stop30seg();
+       StopMenosObvio();
+       StopPervetida();
+       StopPuzzle();
+       Stoprisa2();
+       StopSacrificio();
+       StopValorarVida();
+       Stopcrash();
+       StopAliento();
+
     const myButtonWin = document.getElementById('myButtonWin');
 
 
@@ -327,7 +379,7 @@ valid=1;
             btn_10.disabled = false;
             btn_10.style.opacity = 1.0; 
             btn_10.textContent = "SALIR";
-                                        }, 10000);
+                                        }, 6000);
                     
                     }
 ////////////////
@@ -365,7 +417,7 @@ valid=1;
             btn_12.disabled = false;
             btn_12.style.opacity = 1.0; 
             btn_12.textContent = "SALIR";
-                                        }, 10000);
+                                        }, 8500);
                     }
 ////////////////
 
@@ -1125,7 +1177,7 @@ var timer = setInterval(function () {
                                     <img class="img-fluid rounded mb-5" src="assets/img/portfolio/Fallaste.gif" alt="..." />
                                     <img class="img-fluid rounded mb-5" src="assets/img/portfolio/fallaste.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4">Escanea el QR la decisión es tuya! .</p>
+                                    <p class="mb-4">Escanea el QR la decisión es tuya!</p>
                                   
                                 </div>
                             </div>
