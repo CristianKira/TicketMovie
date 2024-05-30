@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Saw mini game Ticket" />
+        <meta name="author" content="Cristian Kira Hiro" />
+        <title>Encuentra el Ticket o pierde</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+
+
+
+<script >
+
+    
+    var minutes = 0;
+    var seconds = 0;
+    var valid = 0;
+    
+    clearTimeout(timer);
+
+////////////////
+    function cerrar(){
+
+                    PlayAliento();
+                     const Bcerrarb = document.getElementById('Bcerrar');
+                        Bcerrarb.disabled = true;
+                        Bcerrarb.style.opacity = 0.2;  
+                        Bcerrarb.textContent = "-10 segundos";
+    setTimeout(() => {
+
+           $('#CerrarModal1').click();  
+            Bcerrarb.disabled = false;
+            Bcerrarb.style.opacity = 1.0;  
+            Bcerrarb.textContent = "SALIR";
+                                        }, 7000);
+           
+
+                    }
+/
+
+</script>
+
+
+
+    </head>
+
+<div class="text-center">
+                  
+                  
+                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/Fl1.jpeg" id="Ak1" alt="..." />
+                
+
+
+                <script type="text/javascript">
+                    
+                     const Ak1 = document.getElementById("Ak1");
+
+                 
+
+                </script>
+</div>
+    <body id="page-top">
+     
+        <header class=" bg-primary text-white text-center">
+            <div class="container d-flex align-items-center flex-column">
+                
+
+
+        <!-- BOTON PRUEBA-->
+
+ <button id= "myButton"type="button" class="btn btn-primary" data-click_counter_hidden="0"  data-bs-toggle="collapse" data-bs-target="#PaginaOculta" onclick="Empezar()" >👁️‍🗨️</button> 
+
+
+
+        <script> 
+
+    const myButton = document.getElementById('myButton');
+
+
+
+myButton.addEventListener('click', function() {
+
+
+  var el = document.documentElement;
+        var rfs = // for newer Webkit and Firefox
+ 
+
+                   Ak1.src="assets/img/portfolio/Fl.jpeg";
+    myButton.disabled = true;
+    myButton.style.opacity = 0.2;
+  //  myButton.textContent = 'ELJUEGO A EMPEZADO';
+        //simulación de espera para ejecución de un proceso
+    
+
+
+    setTimeout(function() {
+     //   myButton.textContent = 'Pulsar';
+        window.location.href="index2.html"
+        myButton.style.opacity = 0.5;
+        myButton.disabled = false;
+
+    }, 6000);  
+
+
+
+
+var timer = setInterval(function () {
+    
+   
+    
+     
+
+
+
+
+
+}, 1000);
+
+
+
+    
+   
+
+
+
+
+
+});  
+
+
+</script>
+           
+                <!-- Icon Divider-->
+                <div class="divider-custom divider-light">
+
+                </div>
+                <!-- Masthead Subheading-->
+                <p class="masthead-subheading font-weight-light mb-0"> </p> <br>
+            </div>
+        </header>
+
+    
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               KIRA HIRO                                 * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
